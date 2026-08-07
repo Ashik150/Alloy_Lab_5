@@ -1,0 +1,27 @@
+{
+  "name": "alloy-lab",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageReporters": [
+      "lcov"
+    ],
+    "coverageDirectory": "./code-coverage-report",
+    "reporters": ["default", "./node_modules/jest-html-reporters"]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "jest": "^30.4.2",
+    "jest-html-reporters": "^3.1.7"
+  }
+}
