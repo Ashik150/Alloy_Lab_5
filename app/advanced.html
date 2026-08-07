@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Advanced Calculator | Alloy Lab</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<div class="site-shell">
+		<header class="topbar">
+			<a class="brand" href="index.html">Alloy Lab</a>
+			<nav class="nav" aria-label="Calculator navigation">
+				<a href="index.html">Home</a>
+				<a href="basic.html">Basic</a>
+				<a href="custom.html">Custom</a>
+			</nav>
+		</header>
+
+		<main>
+			<section class="page-heading">
+				<p class="eyebrow">Advanced Calculator</p>
+				<h1>Advanced Calculator</h1>
+				<p>Use the advanced module for powers and modulo calculations.</p>
+			</section>
+
+			<section class="calculator-layout">
+				<form class="calculator-panel" id="advanced-form">
+					<div class="field-grid">
+						<label>
+							First value
+							<input id="advanced-a" type="number" step="any" value="5" required>
+						</label>
+						<label>
+							Operation
+							<select id="advanced-operation">
+								<option value="pow">Power</option>
+								<option value="modulo">Modulo</option>
+							</select>
+						</label>
+						<label>
+							Second value
+							<input id="advanced-b" type="number" step="any" value="3" required>
+						</label>
+					</div>
+					<div class="form-actions">
+						<button class="button primary" type="submit">Calculate</button>
+						<button class="button" type="reset">Reset</button>
+					</div>
+				</form>
+
+				<aside class="result-panel" aria-live="polite">
+					<p class="result-label">Result</p>
+					<p class="result-value" id="advanced-result">125</p>
+				</aside>
+			</section>
+		</main>
+	</div>
+
+	<script src="../src/advanced.js"></script>
+	<script src="../src/app.js"></script>
+</body>
+</html>

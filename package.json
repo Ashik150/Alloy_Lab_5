@@ -1,11 +1,12 @@
 {
   "name": "alloy-lab",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/server.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
+    "start": "node src/server.js",
     "test": "jest"
   },
   "jest": {

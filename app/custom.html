@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Compound Interest Calculator | Alloy Lab</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<div class="site-shell">
+		<header class="topbar">
+			<a class="brand" href="index.html">Alloy Lab</a>
+			<nav class="nav" aria-label="Calculator navigation">
+				<a href="index.html">Home</a>
+				<a href="basic.html">Basic</a>
+				<a href="advanced.html">Advanced</a>
+			</nav>
+		</header>
+
+		<main>
+			<section class="page-heading">
+				<p class="eyebrow">Custom Calculator</p>
+				<h1>Compound Interest Calculator</h1>
+				<p>Estimate account growth using arithmetic from basic.js and exponentiation from advanced.js.</p>
+			</section>
+
+			<section class="calculator-layout">
+				<form class="calculator-panel" id="compound-form">
+					<div class="field-grid">
+						<label>
+							Principal
+							<input id="principal" type="number" min="0" step="any" value="10000" required>
+						</label>
+						<label>
+							Annual rate (%)
+							<input id="annual-rate" type="number" min="0" step="any" value="7" required>
+						</label>
+						<label>
+							Years
+							<input id="years" type="number" min="0" step="any" value="10" required>
+						</label>
+						<label>
+							Compounds per year
+							<select id="compounds">
+								<option value="1">Annually</option>
+								<option value="4">Quarterly</option>
+								<option value="12" selected>Monthly</option>
+								<option value="365">Daily</option>
+							</select>
+						</label>
+					</div>
+					<div class="form-actions">
+						<button class="button primary" type="submit">Calculate</button>
+						<button class="button" type="reset">Reset</button>
+					</div>
+				</form>
+
+				<aside class="result-panel" aria-live="polite">
+					<p class="result-label">Future value</p>
+					<p class="result-value" id="compound-result">$20,096.61</p>
+					<ul class="result-list">
+						<li><span>Total interest</span><strong id="compound-interest">$10,096.61</strong></li>
+						<li><span>Total periods</span><strong id="compound-periods">120</strong></li>
+						<li><span>Periodic rate</span><strong id="compound-period-rate">0.5833%</strong></li>
+					</ul>
+				</aside>
+			</section>
+		</main>
+	</div>
+
+	<script src="../src/basic.js"></script>
+	<script src="../src/advanced.js"></script>
+	<script src="../src/custom.js"></script>
+</body>
+</html>
