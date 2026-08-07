@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Compound Interest Calculator | Alloy Lab</title>
+	<title>Custom Calculators | Alloy Lab</title>
 	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -20,50 +20,145 @@
 		<main>
 			<section class="page-heading">
 				<p class="eyebrow">Custom Calculator</p>
-				<h1>Compound Interest Calculator</h1>
-				<p>Estimate account growth using arithmetic from basic.js and exponentiation from advanced.js.</p>
+				<h1>Custom Calculators</h1>
+				<p>Estimate investments, loan payments, and electricity bills using shared logic from the calculator modules.</p>
 			</section>
 
-			<section class="calculator-layout">
-				<form class="calculator-panel" id="compound-form">
-					<div class="field-grid">
-						<label>
-							Principal
-							<input id="principal" type="number" min="0" step="any" value="10000" required>
-						</label>
-						<label>
-							Annual rate (%)
-							<input id="annual-rate" type="number" min="0" step="any" value="7" required>
-						</label>
-						<label>
-							Years
-							<input id="years" type="number" min="0" step="any" value="10" required>
-						</label>
-						<label>
-							Compounds per year
-							<select id="compounds">
-								<option value="1">Annually</option>
-								<option value="4">Quarterly</option>
-								<option value="12" selected>Monthly</option>
-								<option value="365">Daily</option>
-							</select>
-						</label>
+			<section class="custom-stack">
+				<section class="calculator-section" aria-labelledby="compound-title">
+					<div class="calculator-section-title">
+						<h2 id="compound-title">Compound Interest Calculator</h2>
 					</div>
-					<div class="form-actions">
-						<button class="button primary" type="submit">Calculate</button>
-						<button class="button" type="reset">Reset</button>
-					</div>
-				</form>
+					<div class="calculator-layout">
+						<form class="calculator-panel" id="compound-form">
+							<div class="field-grid">
+								<label>
+									Principal
+									<input id="principal" type="number" min="0" step="any" value="10000" required>
+								</label>
+								<label>
+									Annual rate (%)
+									<input id="annual-rate" type="number" min="0" step="any" value="7" required>
+								</label>
+								<label>
+									Years
+									<input id="years" type="number" min="0" step="any" value="10" required>
+								</label>
+								<label>
+									Compounds per year
+									<select id="compounds">
+										<option value="1">Annually</option>
+										<option value="4">Quarterly</option>
+										<option value="12" selected>Monthly</option>
+										<option value="365">Daily</option>
+									</select>
+								</label>
+							</div>
+							<div class="form-actions">
+								<button class="button primary" type="submit">Calculate</button>
+								<button class="button" type="reset">Reset</button>
+							</div>
+						</form>
 
-				<aside class="result-panel" aria-live="polite">
-					<p class="result-label">Future value</p>
-					<p class="result-value" id="compound-result">$20,096.61</p>
-					<ul class="result-list">
-						<li><span>Total interest</span><strong id="compound-interest">$10,096.61</strong></li>
-						<li><span>Total periods</span><strong id="compound-periods">120</strong></li>
-						<li><span>Periodic rate</span><strong id="compound-period-rate">0.5833%</strong></li>
-					</ul>
-				</aside>
+						<aside class="result-panel" aria-live="polite">
+							<p class="result-label">Future value</p>
+							<p class="result-value" id="compound-result">$20,096.61</p>
+							<ul class="result-list">
+								<li><span>Total interest</span><strong id="compound-interest">$10,096.61</strong></li>
+								<li><span>Total periods</span><strong id="compound-periods">120</strong></li>
+								<li><span>Periodic rate</span><strong id="compound-period-rate">0.5833%</strong></li>
+							</ul>
+						</aside>
+					</div>
+				</section>
+
+				<section class="calculator-section" aria-labelledby="loan-title">
+					<div class="calculator-section-title">
+						<h2 id="loan-title">Loan Calculator</h2>
+					</div>
+					<div class="calculator-layout">
+						<form class="calculator-panel" id="loan-form">
+							<div class="field-grid">
+								<label>
+									Loan amount
+									<input id="loan-amount" type="number" min="0" step="any" value="250000" required>
+								</label>
+								<label>
+									Annual interest rate (%)
+									<input id="loan-rate" type="number" min="0" step="any" value="6.5" required>
+								</label>
+								<label>
+									Loan term (years)
+									<input id="loan-years" type="number" min="1" step="any" value="30" required>
+								</label>
+							</div>
+							<div class="form-actions">
+								<button class="button primary" type="submit">Calculate</button>
+								<button class="button" type="reset">Reset</button>
+							</div>
+						</form>
+
+						<aside class="result-panel" aria-live="polite">
+							<p class="result-label">Monthly payment</p>
+							<p class="result-value" id="loan-payment">$1,580.17</p>
+							<ul class="result-list">
+								<li><span>Total payment</span><strong id="loan-total">$568,861.22</strong></li>
+								<li><span>Total interest</span><strong id="loan-interest">$318,861.22</strong></li>
+								<li><span>Payments</span><strong id="loan-payments">360</strong></li>
+							</ul>
+						</aside>
+					</div>
+				</section>
+
+				<section class="calculator-section" aria-labelledby="electricity-title">
+					<div class="calculator-section-title">
+						<h2 id="electricity-title">Electricity Bill Calculator</h2>
+					</div>
+					<div class="calculator-layout">
+						<form class="calculator-panel" id="electricity-form">
+							<div class="field-grid">
+								<label>
+									Units used (kWh)
+									<input id="electricity-units" type="number" min="0" step="any" value="420" required>
+								</label>
+								<label>
+									First 100 kWh rate
+									<input id="electricity-rate-1" type="number" min="0" step="any" value="0.12" required>
+								</label>
+								<label>
+									Next 200 kWh rate
+									<input id="electricity-rate-2" type="number" min="0" step="any" value="0.16" required>
+								</label>
+								<label>
+									Above 300 kWh rate
+									<input id="electricity-rate-3" type="number" min="0" step="any" value="0.22" required>
+								</label>
+								<label>
+									Fixed charge
+									<input id="electricity-fixed" type="number" min="0" step="any" value="8" required>
+								</label>
+								<label>
+									Tax (%)
+									<input id="electricity-tax" type="number" min="0" step="any" value="5" required>
+								</label>
+							</div>
+							<div class="form-actions">
+								<button class="button primary" type="submit">Calculate</button>
+								<button class="button" type="reset">Reset</button>
+							</div>
+						</form>
+
+						<aside class="result-panel" aria-live="polite">
+							<p class="result-label">Total bill</p>
+							<p class="result-value" id="electricity-total">$81.92</p>
+							<ul class="result-list">
+								<li><span>Energy charge</span><strong id="electricity-energy">$70.40</strong></li>
+								<li><span>Tax amount</span><strong id="electricity-tax-amount">$3.52</strong></li>
+								<li><span>Current block remainder</span><strong id="electricity-remainder">20 kWh</strong></li>
+							</ul>
+						</aside>
+					</div>
+				</section>
 			</section>
 		</main>
 	</div>
