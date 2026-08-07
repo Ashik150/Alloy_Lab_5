@@ -186,6 +186,22 @@ h1 {
 	align-items: start;
 }
 
+.custom-stack {
+	display: grid;
+	gap: 38px;
+}
+
+.calculator-section {
+	display: grid;
+	gap: 14px;
+}
+
+.calculator-section-title h2 {
+	margin: 0;
+	font-size: clamp(1.35rem, 3vw, 2rem);
+	letter-spacing: 0;
+}
+
 .calculator-panel,
 .result-panel {
 	border: 1px solid var(--line);

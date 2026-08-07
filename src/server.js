@@ -4,6 +4,7 @@ const path = require("path");
 const { URL } = require("url");
 const basic = require("./basic");
 const advanced = require("./advanced");
+const custom = require("./custom");
 
 const HOST = process.env.HOST || "127.0.0.1";
 const PORT = process.env.PORT || 3000;
@@ -32,23 +33,6 @@ function toNumber(searchParams, name) {
 		throw new Error(`${name} must be a valid number`);
 	}
 	return value;
-}
-
-function calculateCompoundInterest(principal, ratePercent, years, compounds) {
-	const annualRate = basic.divide(ratePercent, 100);
-	const periodRate = basic.divide(annualRate, compounds);
-	const growthBase = basic.add(1, periodRate);
-	const totalPeriods = basic.multiply(compounds, years);
-	const growthFactor = advanced.pow(growthBase, totalPeriods);
-	const futureValue = basic.multiply(principal, growthFactor);
-	const interest = basic.subtract(futureValue, principal);
-
-	return {
-		futureValue,
-		interest,
-		totalPeriods,
-		periodRatePercent: basic.multiply(periodRate, 100),
-	};
 }
 
 function handleApi(requestUrl, response) {
@@ -81,11 +65,38 @@ function handleApi(requestUrl, response) {
 			return sendJson(
 				response,
 				200,
-				calculateCompoundInterest(
+				custom.calculateCompoundInterest(
 					toNumber(params, "principal"),
 					toNumber(params, "annualRate"),
 					toNumber(params, "years"),
 					toNumber(params, "compounds")
+				)
+			);
+		}
+
+		if (requestUrl.pathname === "/api/custom/loan") {
+			return sendJson(
+				response,
+				200,
+				custom.calculateLoan(
+					toNumber(params, "amount"),
+					toNumber(params, "annualRate"),
+					toNumber(params, "years")
+				)
+			);
+		}
+
+		if (requestUrl.pathname === "/api/custom/electricity") {
+			return sendJson(
+				response,
+				200,
+				custom.calculateElectricityBill(
+					toNumber(params, "units"),
+					toNumber(params, "firstRate"),
+					toNumber(params, "secondRate"),
+					toNumber(params, "thirdRate"),
+					toNumber(params, "fixedCharge"),
+					toNumber(params, "taxPercent")
 				)
 			);
 		}
