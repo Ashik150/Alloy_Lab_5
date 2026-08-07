@@ -6,7 +6,32 @@
 
 	root.CustomCalculators = factory(root.BasicCalculator, root.AdvancedCalculator);
 })(typeof window !== "undefined" ? window : globalThis, function (basic, advanced) {
+	function assertFiniteNumber(name, value) {
+		if (!Number.isFinite(value)) {
+			throw new Error(name + " must be a valid number");
+		}
+	}
+
+	function assertNonNegative(name, value) {
+		assertFiniteNumber(name, value);
+		if (value < 0) {
+			throw new Error(name + " must be zero or greater");
+		}
+	}
+
+	function assertPositive(name, value) {
+		assertFiniteNumber(name, value);
+		if (value <= 0) {
+			throw new Error(name + " must be greater than zero");
+		}
+	}
+
 	function calculateCompoundInterest(principal, ratePercent, years, compounds) {
+		assertNonNegative("principal", principal);
+		assertNonNegative("ratePercent", ratePercent);
+		assertNonNegative("years", years);
+		assertPositive("compounds", compounds);
+
 		var annualRate = basic.divide(ratePercent, 100);
 		var periodRate = basic.divide(annualRate, compounds);
 		var growthBase = basic.add(1, periodRate);
@@ -24,6 +49,10 @@
 	}
 
 	function calculateLoan(amount, ratePercent, years) {
+		assertNonNegative("amount", amount);
+		assertNonNegative("ratePercent", ratePercent);
+		assertPositive("years", years);
+
 		var monthlyRate = basic.divide(basic.divide(ratePercent, 100), 12);
 		var totalPayments = basic.multiply(years, 12);
 		var monthlyPayment;
@@ -49,6 +78,13 @@
 	}
 
 	function calculateElectricityBill(units, firstRate, secondRate, thirdRate, fixedCharge, taxPercent) {
+		assertNonNegative("units", units);
+		assertNonNegative("firstRate", firstRate);
+		assertNonNegative("secondRate", secondRate);
+		assertNonNegative("thirdRate", thirdRate);
+		assertNonNegative("fixedCharge", fixedCharge);
+		assertNonNegative("taxPercent", taxPercent);
+
 		var firstUnits = Math.min(units, 100);
 		var secondUnits = Math.min(Math.max(basic.subtract(units, 100), 0), 200);
 		var thirdUnits = Math.max(basic.subtract(units, 300), 0);
