@@ -8,7 +8,7 @@ const custom = require("./custom");
 
 const HOST = process.env.HOST || "127.0.0.1";
 const PORT = process.env.PORT || 3000;
-const APP_DIR = path.join(__dirname, "..", "app");
+const ROOT_DIR = path.join(__dirname, "..");
 const SRC_DIR = __dirname;
 
 const mimeTypes = {
@@ -123,7 +123,7 @@ function sendFile(filePath, response) {
 
 function resolveStaticPath(pathname) {
 	if (pathname === "/") {
-		return path.join(APP_DIR, "index.html");
+		return path.join(ROOT_DIR, "index.html");
 	}
 
 	if (pathname.startsWith("/src/")) {
@@ -133,8 +133,13 @@ function resolveStaticPath(pathname) {
 
 	const normalizedPathname = pathname.endsWith("/") ? `${pathname}index.html` : pathname;
 	const fileName = path.extname(normalizedPathname) ? normalizedPathname : `${normalizedPathname}.html`;
-	const appPath = path.resolve(APP_DIR, `.${fileName}`);
-	return appPath.startsWith(APP_DIR) ? appPath : null;
+	const extension = path.extname(fileName);
+	if (extension !== ".html" && extension !== ".css") {
+		return null;
+	}
+
+	const rootPath = path.resolve(ROOT_DIR, `.${fileName}`);
+	return rootPath.startsWith(ROOT_DIR) ? rootPath : null;
 }
 
 const server = http.createServer((request, response) => {

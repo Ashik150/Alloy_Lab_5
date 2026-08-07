@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Basic Calculator | Alloy Lab</title>
+	<title>Advanced Calculator | Alloy Lab</title>
 	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,37 +12,35 @@
 			<a class="brand" href="index.html">Alloy Lab</a>
 			<nav class="nav" aria-label="Calculator navigation">
 				<a href="index.html">Home</a>
-				<a href="advanced.html">Advanced</a>
+				<a href="basic.html">Basic</a>
 				<a href="custom.html">Custom</a>
 			</nav>
 		</header>
 
 		<main>
 			<section class="page-heading">
-				<p class="eyebrow">Basic Calculator</p>
-				<h1>Basic Calculator</h1>
-				<p>Run the core arithmetic operations from the existing basic module.</p>
+				<p class="eyebrow">Advanced Calculator</p>
+				<h1>Advanced Calculator</h1>
+				<p>Use the advanced module for powers and modulo calculations.</p>
 			</section>
 
 			<section class="calculator-layout">
-				<form class="calculator-panel" id="basic-form">
+				<form class="calculator-panel" id="advanced-form">
 					<div class="field-grid">
 						<label>
 							First value
-							<input id="basic-a" type="number" step="any" value="24" required>
+							<input id="advanced-a" type="number" step="any" value="5" required>
 						</label>
 						<label>
 							Operation
-							<select id="basic-operation">
-								<option value="add">Add</option>
-								<option value="subtract">Subtract</option>
-								<option value="multiply">Multiply</option>
-								<option value="divide">Divide</option>
+							<select id="advanced-operation">
+								<option value="pow">Power</option>
+								<option value="modulo">Modulo</option>
 							</select>
 						</label>
 						<label>
 							Second value
-							<input id="basic-b" type="number" step="any" value="6" required>
+							<input id="advanced-b" type="number" step="any" value="3" required>
 						</label>
 					</div>
 					<div class="form-actions">
@@ -53,13 +51,13 @@
 
 				<aside class="result-panel" aria-live="polite">
 					<p class="result-label">Result</p>
-					<p class="result-value" id="basic-result">30</p>
+					<p class="result-value" id="advanced-result">125</p>
 				</aside>
 			</section>
 		</main>
 	</div>
 
-	<script src="../src/basic.js"></script>
-	<script src="../src/app.js"></script>
+	<script src="src/advanced.js"></script>
+	<script src="src/app.js"></script>
 </body>
 </html>
